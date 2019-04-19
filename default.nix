@@ -1,3 +1,5 @@
+{}:
+
 with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
@@ -6,7 +8,7 @@ stdenv.mkDerivation rec {
   name = "tresorit-${version}";
 
   src = fetchurl {
-    url = "https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run";
+    url = https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run;
     sha256 = "09kkzqb5p8ylihdbib4mf14a3jyaka87g9hz2ggxzpdq1smsc2ab";
   };
 
@@ -28,7 +30,8 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/bin
     cp -rf $TMP/tresorit_x64/* $out/bin/
-  ''; 
+    rm $out/bin/uninstall.sh
+  '';
 
   meta = with stdenv.lib; {
     description = "Tresorit is the ultra-secure place in the cloud to store, sync and share files easily from anywhere, anytime.";
