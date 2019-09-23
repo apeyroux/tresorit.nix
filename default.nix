@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run;
-    sha256 = "0f27ci01pqyql8z243pdaf3rxjbv3hl2r5sih9d928hmablhr009";
+    sha256 = "a133e5685cf7c7bd687b6d150848a5a58d82d976e1660db40d9e05ea798c122c";
   };
 
   nativeBuildInputs = [ autoPatchelfHook ];
