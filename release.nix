@@ -25,7 +25,7 @@ let
   '';
 in {
   impure = stdenv.mkDerivation {
-    name = "tresorit-impure";
+    name = "tresorit-impure-${pure.version}";
     src = ./.;
     installPhase = ''
       mkdir -p $out/bin
