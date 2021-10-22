@@ -9,7 +9,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run;
-    sha256 = "18507prr228q0csfqri4k9yiyzmrinzx5rxc67acvf710qzsqn6r";
+    sha256 = "0m83zb59v1fkyrc9lkyggiifcrh5mfxg579bk8512szypn7m83mp";
   };
 
   nativeBuildInputs = [ autoPatchelfHook ];
@@ -24,7 +24,7 @@ stdenv.mkDerivation rec {
   dontMake = true;
 
   unpackPhase  = ''
-    tail -n+94 $src | tar xz -C $TMP
+    tail -c+8616 $src | tar xz -C $TMP
   '';
 
   installPhase = ''
