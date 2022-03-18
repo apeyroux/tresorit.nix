@@ -20,7 +20,7 @@ openat(AT_FDCWD, "/nix/store/0qrdl9f7qpk4vfk3j854vri941jccw1z-tresorit-3.5.698.8
 # Bypass with "impure" method
 
 ``` shell
-nix run -f release.nix -c install-impure-tresorit
+nix run -f release.nix -c install-tresorit-impure
 ```
 
 This install tresorit in your $HOME/.local/tresorit (as does the

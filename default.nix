@@ -4,27 +4,25 @@ with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
 
-  version = "3.5.852.1550";
+  version = "3.5.1006.2650";
   name = "tresorit-${version}";
 
   src = fetchurl {
     url = https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run;
-    sha256 = "0m83zb59v1fkyrc9lkyggiifcrh5mfxg579bk8512szypn7m83mp";
+    sha256 = "08q0jl7kvbhzk5l10q0hf14x63r0dkbn0w0d556sjwdamwjry1xm";
   };
 
   nativeBuildInputs = [ autoPatchelfHook ];
-  buildInputs = [ xorg.libXext
-                  xorg.libxcb
-                  xorg.libX11
-                  fuse
-                  libGL ];
+  buildInputs = [ qt5.qtbase
+                  fuse ];
 
   dontBuild = true;
   dontConfigure = true;
   dontMake = true;
+  dontWrapQtApps = true;
 
   unpackPhase  = ''
-    tail -c+8616 $src | tar xz -C $TMP
+    tail -n+93 $src | tar xz -C $TMP
   '';
 
   installPhase = ''
@@ -33,7 +31,7 @@ stdenv.mkDerivation rec {
     rm $out/bin/uninstall.sh
   '';
 
-  meta = with stdenv.lib; {
+  meta = with lib; {
     description = "Tresorit is the ultra-secure place in the cloud to store, sync and share files easily from anywhere, anytime.";
     homepage = https://tresorit.com;
     license = licenses.unfree;
