@@ -2,13 +2,16 @@
 
 For the moment it doesn't work without tinkering on nix because the
 binary tresorit is trying to write in its current directory (and nix
-store is rw). Currently, there are no options to change this:
+store is RO not RW !). Currently, there are no options to change this:
 
 _strace tresorit_ :
 
 
 ``` shell
-mkdir("/nix/store/0qrdl9f7qpk4vfk3j854vri941jccw1z-tresorit-3.5.698.875/bin/Logs/", 0777) = -1 EROFS (Read-only file system)
+stat("/nix/store/z0z06wrd0wsymlngd2jslzgs0n62yv8h-tresorit-3.5.1006.2650/bin/Logs/", 0x7ffea6f0e5b0) = -1 ENOENT (No such file or directory)
+mkdir("/nix/store/z0z06wrd0wsymlngd2jslzgs0n62yv8h-tresorit-3.5.1006.2650/bin/Logs/", 0777) = -1 EROFS (Read-only file system)
+stat("/nix/store/z0z06wrd0wsymlngd2jslzgs0n62yv8h-tresorit-3.5.1006.2650/bin/Logs/", 0x7ffea6f0e5b0) = -1 ENOENT (No such file or directory)
+mkdir("/nix/store/z0z06wrd0wsymlngd2jslzgs0n62yv8h-tresorit-3.5.1006.2650/bin/Logs/", 0777) = -1 EROFS (Read-only file system)
 ```
 
 or
