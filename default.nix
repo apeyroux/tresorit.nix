@@ -4,12 +4,12 @@ with import <nixpkgs> {};
 
 stdenv.mkDerivation rec {
 
-  version = "3.5.1244.4360";
+  version = "3.5.1281.4700";
   name = "tresorit-${version}";
 
   src = fetchurl {
     url = https://installerstorage.blob.core.windows.net/public/install/tresorit_installer.run;
-    sha256 = "865bf2e54791546e9637823671ca5475091b6f8a2599c668040d3feed092b6ee";
+    sha256 = "e8f1a9f379854894a5066c9c2b22184be914f6566955667c15971cba4763c943";
   };
 
   nativeBuildInputs = [ autoPatchelfHook ];
